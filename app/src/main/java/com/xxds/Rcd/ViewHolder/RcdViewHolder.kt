@@ -1,17 +1,19 @@
 package com.xxds.Rcd.ViewHolder
 
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.xxds.Rcd.Model.RcdModel
-import kotlinx.android.synthetic.main.layout.view.*
+import kotlinx.android.synthetic.main.layout.*
+import com.xxds.kotlin_gnms.R
 
 
 /**
  * Created by xxds on 2018/10/22.
  */
 
-class  RcdViewHolder (val content: View) {
+class  RcdViewHolder (val content: View,itemClickLisner: ()->Unit ): RecyclerView.ViewHolder(content) {
 
 
     val imgView: ImageView = content.findViewById(R.id.imageView)
@@ -22,11 +24,19 @@ class  RcdViewHolder (val content: View) {
 
     set(value) {
 
-        if (value != model) {
+        if (value != field) {
 
-            title.text = model?.title
-            subTitle.text = model?.artist_name
+            field = value
+        }
+        title.text = model?.title
+        subTitle.text = model?.artist_name
+    }
 
+    init {
+
+        content.setOnClickListener {
+
+            itemClickLisner()
         }
     }
 }
