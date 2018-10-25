@@ -17,6 +17,12 @@ import com.xxds.kotlin_gnms.R
 
 
 import kotlinx.android.synthetic.main.activity_rcd_main.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
+import org.jetbrains.anko.uiThread
+
+//import org.jetbrains.anko.doAsync
+//import org.jetbrains.anko.uiThread
 
 class RcdMainActivity : AppCompatActivity() {
 
@@ -36,6 +42,8 @@ class RcdMainActivity : AppCompatActivity() {
 
         recycleList = ArrayList()
         recycleList.add(RcdModel("first",23411))
+        recycleList.add(RcdModel("second",1234334))
+
         recycleView = findViewById(R.id.recycleView)
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.adapter = rcdAdapter(recycleList,{
@@ -51,23 +59,27 @@ class RcdMainActivity : AppCompatActivity() {
       class rcdAdapter( var recycleList: ArrayList<RcdModel>,val itemClickLisner: ()->Unit ): RecyclerView.Adapter<RcdViewHolder>() {
 
 
-          override fun getItemCount(): Int =  recycleList.size
+          override fun getItemCount(): Int = recycleList.size
 
 
-          override fun onBindViewHolder(holder: RcdViewHolder?, position: Int) {
+//           fun onBindViewHolder(holder: RcdViewHolder?, position: Int) {
 
 
-              holder?.model = recycleList[position]
+//          }
+
+
+          override fun onBindViewHolder(holder: RcdViewHolder, position: Int) {
+
+              holder.model = recycleList[position]
           }
 
-          override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RcdViewHolder {
+          override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RcdViewHolder {
 
-                val v = LayoutInflater.from(parent?.context).inflate(R.layout.layout,parent!!,false)
+              val v = LayoutInflater.from(parent.context).inflate(R.layout.layout, parent, false)
               return RcdViewHolder(v, itemClickLisner)
-
           }
 
-
+      }
 //        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 //
 //            var v: View
@@ -98,6 +110,6 @@ class RcdMainActivity : AppCompatActivity() {
 //        }
 
 //          class  RcdViewHolder(val )
-     }
+
 
 }
