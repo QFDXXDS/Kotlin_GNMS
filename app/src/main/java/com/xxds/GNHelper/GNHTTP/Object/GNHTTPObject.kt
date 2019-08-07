@@ -21,7 +21,6 @@ class  GNHTTPObject {
 
             var url = this.URL(req)
             var requet = Request.Builder()
-                    .method(req.method(),req.parameters())
                     .url(req.URL())
                     .build()
 
@@ -35,7 +34,6 @@ class  GNHTTPObject {
 
 
             }
-
             return  url
         }
     }

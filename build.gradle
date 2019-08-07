@@ -1,13 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.1.51'
+
+
+//    使用ext命名空间定义拓展属性
+//    gradle属性文件gradle.properties定义属性
+    ext.kotlin_version =  '1.3.21'
+//    指脚本本身依赖的仓库源，其委托的对象实际上是ScriptHandler
     repositories {
         google()
         jcenter()
     }
+//  指脚本本身依赖
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.4.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -19,6 +25,13 @@ allprojects {
     repositories {
         google()
         jcenter()
+//        maven {
+////            url "https://maven.google.com"
+//
+//        }
+
+        maven { url 'https://jitpack.io' }
+
     }
 }
 
